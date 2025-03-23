@@ -1,7 +1,7 @@
 import express from "express";
 
 import {clientProfile , freelanceProfileInfo , freelanceProfileSkills , freelancerProject} from "../controller/profileController.js";
-import {protectedRoute , freelanceProtectedRoute} from "../middleware/protectedRoute.js";
+import {protectedRoute } from "../middleware/protectedRoute.js";
 
 const profileRoute = express.Router();
 
@@ -9,7 +9,7 @@ const profileRoute = express.Router();
 profileRoute.post("/client",protectedRoute , clientProfile);
 
 //Freelance Routes
-profileRoute.post("/freelancer/info" , freelanceProtectedRoute , freelanceProfileInfo);
+profileRoute.post("/freelancer/info" , protectedRoute , freelanceProfileInfo);
 profileRoute.post("/freelancer/skills" , protectedRoute , freelanceProfileSkills);
 profileRoute.post("/freelancer/project" , protectedRoute , freelancerProject );
 

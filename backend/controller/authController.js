@@ -5,7 +5,7 @@ import Client from "../model/Clients.js";
 import bcrypt from "bcryptjs";
 
 
-import {generateToken , freelancerToken} from "../utils/token.js";
+import {generateToken } from "../utils/token.js";
 
 const signUp = async(req ,res) => {
 
@@ -111,20 +111,20 @@ const login = async(req ,res) => {
             })
         }
 
-        let freeToken = null;
-        if (checkEmail.account === "freelancer") {
-            const freelancer = await Freelancer.findOne({ UserId: checkEmail._id }, { _id: 1 });
-            if (freelancer) {
-                freeToken = await freelancerToken(freelancer._id, res);
-            }
-        }
+        // let freeToken = null;
+        // if (checkEmail.account === "freelancer") {
+        //     const freelancer = await Freelancer.findOne({ UserId: checkEmail._id }, { _id: 1 });
+        //     if (freelancer) {
+        //         freeToken = await freelancerToken(freelancer._id, res);
+        //     }
+        // }
 
         return res.status(200).json({
             success: true,
             message: "User logged in successfully !!",
             user: checkEmail.id,
             token: token,
-            ...(freeToken && { freeToken }) 
+            // ...(freeToken && { freeToken }) 
         });
 
     } catch (error) {
@@ -214,20 +214,13 @@ const accountType = async(req ,res) => {
 
             console.log("Freelance profile created successfully");
 
-            if (freeLanceProfile) {
-                
-                const freeToken = await freelancerToken(freeLanceProfile._id , res);
-                console.log(`Free token is => ${freeToken}`);
-
-                return res.status(200).json({
-                    success:true,
-                    message:"User account updated successfully",
-                    user:updateUser,
-                    freeLanceProfile,
-                    freeToken:freeToken
-                })
     
-            }
+            return res.status(200).json({
+                       success:true,
+                        message:"User account updated successfully",
+                        user:updateUser,
+                        freeLanceProfile,
+                    })
 
         }
 

@@ -55,49 +55,6 @@ const protectedRoute = async(req ,res ,next) => {
 
 }
 
-const freelanceProtectedRoute = async(req , res , next) => {
-    try {
-        
-        const token =  req.cookies.freeToken;
 
-        console.log(`The token is => ${token}`);
-        
 
-        if (!token) {
-            return res.status(400).json({
-                success:false,
-                message:"Unauthorized - Token not found in freelance protected route"
-            })
-        }
-
-        const decode = await jwt.verify(token , JWT_SECRET);
-
-        if (!decode) {
-            return res.status(400).json({
-                  success:false,
-                message:"Unauthorized - Invalid Token"
-            })
-        }
-
-        const user = await Freelancer.findById(decode.id);
-
-        if (!user) {
-            return res.status(400).json({
-                success:false,
-                message:"User not found in Protected route"
-            })
-        }
-
-        req.freelancer = user;
-
-        next();
-
-    } catch (error) {
-        return res.status(400).json({
-            success:false,
-            message:`Error occured in Proteced route => ${error}`
-        })
-    }
-}
-
-export  {protectedRoute , freelanceProtectedRoute};
+export  {protectedRoute };

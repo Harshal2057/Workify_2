@@ -85,8 +85,8 @@ const freelanceProfileInfo = async(req ,res) => {
             })
         }
 
-        const updateFreelancerProfile = await Freelancer.findByIdAndUpdate(
-            { UserId: user.id } ,
+        const updateFreelancerProfile = await Freelancer.findOneAndUpdate(
+            { UserId:user.id } ,
          {
             $set:{
                 contact: contact,
