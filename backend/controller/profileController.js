@@ -78,12 +78,12 @@ const freelanceProfileInfo = async(req ,res) => {
 
         const {contact , location , github  } = req.body;
         
-        if (!contact || !location ) {
-            return res.status(400).json({
-                success:false,
-                message:"Please fill the required fields"
-            })
-        }
+        // if (!contact || !location ) {
+        //     return res.status(400).json({
+        //         success:false,
+        //         message:"Please fill the required fields"
+        //     })
+        // }
 
         const updateFreelancerProfile = await Freelancer.findOneAndUpdate(
             { UserId:user.id } ,
@@ -135,17 +135,19 @@ const freelanceProfileSkills = async(req ,res) => {
         const {skills , about , education } = req.body;
         const user = req.user;
 
-        const updateFreelancerProfile = await Freelancer.findByIdAndUpdate(
-            user._id ,
-           {
-              $set:{
-                skills: Array.isArray(skills) ? skills : [],
-                about: about || "",
-                education: Array.isArray(education) ? education : []
-              }
-           },
-           {new:true}
-          )
+        const updateFreelancerProfile = await Freelancer.findOneAndUpdate(
+            { UserId: user.id },
+            {
+                $set: {
+                    about: about || "",
+                },
+                $push: {
+                    skills: { $each: Array.isArray(skills) ? skills : [] }, 
+                    education: { $each: Array.isArray(education) ? education : [] } 
+                }
+            },
+            { new: true }
+        );
 
           if (!updateFreelancerProfile) {
             return res.status(400).json({
@@ -156,7 +158,8 @@ const freelanceProfileSkills = async(req ,res) => {
 
           return res.status(200).json({
             success:true,
-            message:"Freelancer profile updated successfully"
+            message:"Freelancer profile updated successfully",
+            updateFreelancerProfile
           })
 
 
@@ -199,8 +202,8 @@ const freelancerProject = async(req ,res) => {
 
         console.log("Project created successfully");
 
-        const updateProject = await Freelancer.findByIdAndUpdate(
-            user._id,
+        const addProject = await Freelancer.findOneAndUpdate(
+           {UserId : user.id},
             {
                 $push:{
                     projects:newProject._id
@@ -209,7 +212,7 @@ const freelancerProject = async(req ,res) => {
             {new:true}
         )
         
-        if (!updateProject) {
+        if (!addProject) {
             return res.status(400).json({
                 success:false,
                 message:"Freelancer not found"

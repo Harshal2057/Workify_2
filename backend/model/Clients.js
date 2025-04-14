@@ -35,10 +35,10 @@ const clientSchema = new mongoose.Schema({
         ref:"Job"
     },
     
-    Pending_job:{
+    Pending_job:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Job"
-    },
+    }],
 
     payment:{
         type:String,
@@ -47,4 +47,4 @@ const clientSchema = new mongoose.Schema({
 
 })
 
-export default mongoose.model("Client" , clientSchema);
+export default mongoose.model("Clients" , clientSchema);

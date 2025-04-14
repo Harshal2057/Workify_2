@@ -17,6 +17,14 @@ contact:{
     default:""
 },
 
+profilePicUrl:{
+    type:String
+},
+
+backgroundPic:{
+    type:String
+},
+
 email:{
     type:String,
     required:true
@@ -33,7 +41,7 @@ github:{
 
 about:{
     type:String,
-     default:""
+    default:""
 },
 
 skills:{

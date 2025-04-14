@@ -9,7 +9,7 @@ userRouter.post("/signUp" , signUp);
 userRouter.post("/login" , login);
 userRouter.post("/logout" , logOut);
 
-userRouter.put("/updateAccout" ,protectedRoute, accountType);
+userRouter.put("/updateAccount" ,protectedRoute, accountType);
 userRouter.get("/checkAuth", protectedRoute , checkAuth);
 
 

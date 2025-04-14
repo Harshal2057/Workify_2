@@ -10,6 +10,8 @@ const generateToken = async(userid , res) => {
         
         const token = await jwt.sign({id : userid} , privateKey , {expiresIn : "1h"});
         console.log("Token generated successfully");
+
+        console.log(`Token => ${token}`)
         
         res.cookie("token" , token , {
             maxAge:7 * 24 * 60 * 60 * 1000,
@@ -33,10 +35,9 @@ const freelancerToken = async (freeId, res) => {
         const freeToken = await jwt.sign({ id: freeId }, privateKey, { expiresIn: "1h" });
         console.log("Freelancer token created successfully");
 
-        res.cookie("freeToken", freeToken, { // 🔥 Used consistent lowercase
-            maxAge: 7 * 24 * 60 * 60 * 1000,  // 7 days
-            httpOnly: true,
-            secure: false, // 🔥 Set to false for local development
+        res.cookie("freeToken", freeToken, {
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+            secure: false, 
             sameSite: "Strict"
         });
 

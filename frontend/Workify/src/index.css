@@ -1,1 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
+
+html, body {
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+
+@theme {
+    --color-custom-grey: #A0A0A0 ;
+  }
+
+  /* Remove default "Show Password" button */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+input[type="password"]::-webkit-contacts-auto-fill-button,
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  display: none !important;
+}

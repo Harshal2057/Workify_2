@@ -17,16 +17,15 @@ const projectSchema = new mongoose.Schema({
         required:true
     },
 
-    uploaded_at:{
-        type:Date,
-        default:Date.now()
-    },
-
     proj_desc:{
         type:String,
         required:true
-    }
+    },
 
+    uploaded_at:{
+        type:Date,
+        default:Date.now()
+    }
 
 })
 

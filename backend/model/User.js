@@ -13,8 +13,7 @@ import mongoose from "mongoose";
     },
 
     password:{
-        type:String,
-        required:true
+        type:String
     },
 
     account:{

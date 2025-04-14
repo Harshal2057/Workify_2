@@ -184,6 +184,8 @@ const accountType = async(req ,res) => {
             })
         }
 
+        
+
         const updateUser = await User.findByIdAndUpdate(
             user._id,
             {account},
