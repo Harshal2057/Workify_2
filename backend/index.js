@@ -14,6 +14,7 @@ import jobRoute from "./routes/jobRoute.js"
 import findJobRoute from "./routes/findJobRoute.js"
 import googleRoute from "./routes/googleRoute.js"
 import imgRouter from "./routes/imageRoute.js"
+import getProfileRouter from "./routes/getProfileRoute.js"
 import "./auth/google.js"
 
 
@@ -60,6 +61,7 @@ app.use("/api/profile" , profileRoute);
 app.use("/api/job" , jobRoute);
 app.use("/api/findJob" , findJobRoute);
 app.use("/uploadImg" , imgRouter);
+app.use("/get-profile" , getProfileRouter);
 
 
 app.get("/" , (req ,res) => {

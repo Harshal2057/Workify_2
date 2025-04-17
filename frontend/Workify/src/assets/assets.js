@@ -16,6 +16,9 @@ import android from './android.png'
 import web_dev_1 from './web_dev_icon.png'
 import web_dev_2 from './web-dev-icon_2.png'
 import graphic_designer from './graphic_design-rbg.png/'
+import default_background_img from './background_image.png'
+import default_profile_icon from './default_profile_icon.png'
+
 
 export const assets = {
     Workify_logo,
@@ -35,7 +38,9 @@ export const assets = {
     android,
     web_dev_1,
     web_dev_2,
-    graphic_designer
+    graphic_designer,
+    default_background_img,
+    default_profile_icon
 };
 
 const clientFooter = [

@@ -97,6 +97,7 @@ const Navbar = () => {
               ) : (
                 <div className="relative group">
                 {/* Profile Icon */}
+                
                 <div className="text-white hidden lg:block text-2xl border-2 border-white p-1 px-2 rounded-full hover:bg-white hover:text-black">
                   <FontAwesomeIcon icon={faUser} />
                 </div>
@@ -107,10 +108,12 @@ const Navbar = () => {
                   <div className="h-2 w-full"></div>
                   
                   <ul className="w-32 bg-white shadow-md rounded-lg">
+                    <Link to="/profilePage">
                     <li className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 cursor-pointer">
                       <FontAwesomeIcon icon={faUser} />
                       <p>Profile</p>
                     </li>
+                    </Link>
                     <hr />
                     <li
                       onClick={logOut}
@@ -146,11 +149,11 @@ const Navbar = () => {
         <div
           ref={hamRef}
           id="hamburger"
-          className="w-[100%] text-white absolute top-23 left-[100%] p-5 font-[Outfit] flex flex-col gap-4 mt-4  bg-black lg:hidden"
+          className="w-[100%] text-white absolute top-23 left-[100%] p-5 font-[Outfit] flex flex-col gap-4 mt-4 z-10 bg-black lg:hidden"
         >
           {!token && (
             <Link to="/auth">
-              <div>
+              <div onClick={() => setIsOpen(false)}>
                 <button>Sign Up</button>
               </div>
             </Link>
@@ -158,16 +161,18 @@ const Navbar = () => {
 
           {!token && (
             <Link to="/auth">
-              <div>
+              <div onClick={() => setIsOpen(false)}>
                 <button>Log in</button>
               </div>
             </Link>
           )}
 
           {token && (
-            <div onClick={logOut}>
+            <Link to="/profilePage">
+            <div onClick={() => setIsOpen(false)}>
               <button>Profile</button>
             </div>
+            </Link>
           )}
 
           {token && (

@@ -8,7 +8,7 @@ const privateKey = process.env.JWT_SECRET_KEY;
 const generateToken = async(userid , res) => {
     try {
         
-        const token = await jwt.sign({id : userid} , privateKey , {expiresIn : "1h"});
+        const token = await jwt.sign({id : userid} , privateKey , {expiresIn : "7d"});
         console.log("Token generated successfully");
 
         console.log(`Token => ${token}`)
@@ -30,24 +30,7 @@ const generateToken = async(userid , res) => {
     }
 }
 
-const freelancerToken = async (freeId, res) => {
-    try {
-        const freeToken = await jwt.sign({ id: freeId }, privateKey, { expiresIn: "1h" });
-        console.log("Freelancer token created successfully");
-
-        res.cookie("freeToken", freeToken, {
-            maxAge: 7 * 24 * 60 * 60 * 1000,
-            secure: false, 
-            sameSite: "Strict"
-        });
-
-        return freeToken;
-
-    } catch (error) {
-        console.error(`Error occurred while creating freeToken => ${error}`);
-        throw new Error("Token creation failed");
-    }
-};
 
 
-export  {generateToken , freelancerToken};
+
+export  {generateToken };

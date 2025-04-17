@@ -6,6 +6,7 @@ import Auth from "./pages/Auth"
 import Accounttype from "./pages/Accounttype"
 import { StoreContext } from "./context/StoreContext";
 import { useContext } from "react";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
  
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/auth" element={<Auth />} />
         <Route path="/accountType" element={<Accounttype />} />
+        <Route path="/profilePage" element={<ProfilePage />} />
     </Routes>
 
     </div>
