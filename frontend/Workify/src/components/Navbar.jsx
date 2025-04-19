@@ -39,7 +39,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full">
+      <div className="w-full fixed  z-30">
         <div className=" w-auto px-12 m-auto p-2 sm:flex justify-between bg-black ">
           {/* Left side */}
           <div className="flex justify-center items-center">

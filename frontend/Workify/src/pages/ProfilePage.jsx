@@ -53,7 +53,7 @@ const ProfilePage = () => {
   } , [])
 
   return (
-    <div className="w-full lg:h-screen bg-gray-100 flex justify-center p-5">
+    <div className="w-full lg:h-screen pt-10 lg:pt-20 bg-gray-100 flex justify-center p-5">
       <div
         className='w-full lg:w-5/6  lg:h-3/6 xl:h-full relative bg-gray-200 rounded-2xl'
         style={{
@@ -83,8 +83,10 @@ const ProfilePage = () => {
         </div>
 
         {/* Info Section */}
-        <div className='relative lg:top-10 pt-12 px-8 pb-6'>
-          {/* Name */}
+        <div className='relative lg:top-10 pt-12 px-8 pb-6 flex justify-between'>
+
+          <div>
+              {/* Name */}
           <div className='font-semibold text-xl mb-1'>
             <p>{freelancer?.fullName || "Loading..."}</p>
           </div>
@@ -100,6 +102,16 @@ const ProfilePage = () => {
             <FontAwesomeIcon icon={faLocationDot} />
             <p>{freelancer?.location || "Not specified"}</p>
           </div>
+
+          </div>
+
+          <div className='h-full bg-black border-2  border-solid border-black p-1 px-2 rounded-full hover:bg-white '>
+            <FontAwesomeIcon
+            icon={faPen}
+            className='text-white hover:text-black'
+            />
+          </div>
+
         </div>
 
         {/* Edit Button */}

@@ -38,14 +38,14 @@ const Cardsection = () => {
    
       <div ref={sliderRef} className="w-full max-h-max flex gap-20 mt-14 mr-14 mb-14">
 
-      <div className="absolute w-2/6 left-[10%] top-32 border-1 border-black font-[Outfit] p-5 flex flex-col gap-5">
+      <div className="absolute lg:w-2/6 left-[10%] top-32 mr-10 border-1 border-black font-[Outfit] p-5 flex flex-col gap-5">
         <div>
         <p className="font-bold text-4xl">Expert Services, Exceptional Results</p>
         <p className="font-semibold">Find top freelancers for your next big project!</p>
         </div>
        
        <div>
-       <p className="font-light">Whether you need a stunning website, eye-catching designs, or expert marketing strategies, our skilled freelancers deliver top-tier results tailored to your needs.</p>
+       <p className="hidden lg:block font-light">Whether you need a stunning website, eye-catching designs, or expert marketing strategies, our skilled freelancers deliver top-tier results tailored to your needs.</p>
        </div>
       
       </div>
