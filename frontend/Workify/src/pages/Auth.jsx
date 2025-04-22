@@ -13,7 +13,7 @@ const Auth = () => {
 
   const navigate = useNavigate();
 
-  const{url , token , setToken , setShowLogin} = useContext(StoreContext);
+  const{url , token , setToken , setShowLogin , fetchFreelancer} = useContext(StoreContext);
 
   const fullNameRef = useRef(null);
   const emailRef = useRef(null);
@@ -99,6 +99,8 @@ const handleSubmitData = async(event) => {
         toast.success("User logged in successfully")
 
       }
+
+      await fetchFreelancer();
 
       if (state === "SignUp") {
         navigate("/accountType");

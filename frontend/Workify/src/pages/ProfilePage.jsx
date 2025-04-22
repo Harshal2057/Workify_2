@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEnvelope, faPen, faLocationDot } from "@fortawesome/free-solid-svg-icons"
 import { StoreContext } from '../context/StoreContext.jsx'
@@ -14,6 +14,7 @@ const ProfilePage = () => {
     navigate("/edit-background");
   }
 
+  
 
 
   return (

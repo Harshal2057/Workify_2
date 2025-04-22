@@ -34,53 +34,49 @@ const StoreContextProvider = (props) => {
 
     }
 
-    //Setting Background and Profile 
-    useEffect(() => {
-        const fetchFreelancer = async() => {
-          const token = localStorage.getItem("token")
-    
-          if (!token) {
-            console.log("No token found, redirecting to login")
-            navigate("/auth");
-            return
+     //Setting Background and Profile 
+    const fetchFreelancer = async() => {
+      const token = localStorage.getItem("token")
+
+      if (!token) {
+        console.log("No token found, redirecting to login")
+        navigate("/auth");
+        return
+      }
+
+      try {
+        const response = await axios.get("http://localhost:4000/get-profile/get-freelancer", {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
           }
-    
-          try {
-            const response = await axios.get("http://localhost:4000/get-profile/get-freelancer", {
-              withCredentials: true,
-              headers: {
-                Authorization: `Bearer ${token}`,
-              }
-            })
-            console.log(response.data.profile)
-            setFreelancer(response.data.profile)
-           
-            
-            setBack_img(response.data.profile.backgroundPic)
-            setProfile_img(response.data.profile.profilePicUrl)
-          } catch (error) {
-            console.error(`Error occurred while fetching freelancer in frontend => ${error}`)
-    
-            if (error.response && (error.response.status === 401 || error.response.status === 400)) {
-              console.log("Token expired, redirecting to login");
-              localStorage.removeItem("token");
-              navigate("/auth");
-            }
-          }
+        })
+        console.log(response.data.profile)
+        setFreelancer(response.data.profile)
+       
+        
+        setBack_img(response.data.profile.backgroundPic)
+        setProfile_img(response.data.profile.profilePicUrl)
+      } catch (error) {
+        console.error(`Error occurred while fetching freelancer in frontend => ${error}`)
+
+        if (error.response && (error.response.status === 401 || error.response.status === 400)) {
+          console.log("Token expired, redirecting to login");
+          localStorage.removeItem("token");
+          navigate("/auth");
         }
+      }
+    }
+
+   
+    useEffect(() => {
         fetchFreelancer()
       } , [])
 
 
-    //checking freelancer
-    // useEffect(() => {
-    //     if (freelancer) {
-    //       console.log(`The freelancer is =>`, freelancer);
-    //     }
-    //   }, [freelancer]);
+   
       
-    
-
+  
     const contextValue = {
             url,
             token,
@@ -88,7 +84,8 @@ const StoreContextProvider = (props) => {
             showLogin,
             setShowLogin,
             logOut,
-            freelancer
+            freelancer,
+            fetchFreelancer
     }
 
     return <StoreContext.Provider value={contextValue}>
