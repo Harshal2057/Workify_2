@@ -14,7 +14,9 @@ const ProfilePage = () => {
     navigate("/edit-background");
   }
 
-  
+  function handleProfileClick(){
+    navigate("/edit-profilepic")
+  }
 
 
   return (
@@ -37,7 +39,7 @@ const ProfilePage = () => {
         </div>
 
         {/* Profile Image */}
-        <div className='absolute left-8 transform -translate-y-1/2'>
+        <div className='absolute left-8 transform -translate-y-1/2' onClick={handleProfileClick}>
           <div className='w-20 h-20 md:w-28 md:h-28 lg:w-42 lg:h-42 rounded-full overflow-hidden border-4 border-white'>
             <img 
              src={freelancer?.profilePicUrl || assets.default_profile_icon}

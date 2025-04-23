@@ -129,7 +129,7 @@ const handleGoogleLogin = () => {
 
 
   return (
-    <div className="w-full">
+    <div className="w-full mt-20">
       <div className="w-5/6 border-1 p-5 border-black mt-4 m-auto rounded-4xl">
         {state === "SignUp" ? (
           <p className="font-bold font-[Outfit] text-3xl">Create Account</p>

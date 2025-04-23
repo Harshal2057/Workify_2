@@ -8,6 +8,7 @@ import { StoreContext } from "./context/StoreContext";
 import { useContext } from "react";
 import ProfilePage from "./pages/ProfilePage";
 import Back_picUpload from "./components/Back_picUpload";
+import Profile_picUpload from "./components/Profile_picUpload";
 function App() {
  
   const{setShowLogin , showLogin} = useContext(StoreContext);
@@ -27,6 +28,7 @@ function App() {
         <Route path="/accountType" element={<Accounttype />} />
         <Route path="/profilePage" element={<ProfilePage />} />
         <Route path="/edit-background" element={<Back_picUpload />} />
+        <Route path="/edit-profilepic" element={<Profile_picUpload />} />
     </Routes>
 
     </div>
