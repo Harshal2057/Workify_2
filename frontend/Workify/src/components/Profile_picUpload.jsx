@@ -3,10 +3,12 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { StoreContext } from "../context/StoreContext";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import { assets } from "../assets/assets";
 
-const Profile_picUpload = () => {
+const Profile_picUpload = ({setUpdateProfile_pic}) => {
 
   const inputRef = useRef();
 
@@ -60,7 +62,7 @@ const Profile_picUpload = () => {
 
       await fetchFreelancer();
 
-      navigate("/profilePage")
+      setUpdateProfile_pic(false)
      }
 
     } catch (error) {
@@ -75,17 +77,24 @@ const Profile_picUpload = () => {
 
   return (
     <div className="mt-20 w-full lg:h-screen flex justify-center items-center">
-      <div className="border-1 border-solid border-black w-4/6 lg:w-3/6 p-2 text-center items-center lg:text-left rounded-2xl shadow-2xl" >
-        <div>
-          <p className="font-semibold text-2xl"> Profile Pic</p>
+      <div className="border-3 border-solid border-black w-4/6 lg:w-3/6  text-center items-center lg:text-left rounded-2xl shadow-2xl" >
+       <div className="w-full flex justify-between bg-black p-2 rounded-tr-xl rounded-tl-xl">
+       <div>
+          <p className="font-semibold text-white  text-2xl"> Profile Pic</p>
         </div>
+
+        <div onClick={() => {setUpdateProfile_pic(false)}}>
+          <FontAwesomeIcon icon={faXmark} className="text-white text-3xl" />
+        </div>
+       </div>
+      
         
-        <div className="lg:flex flex-col justify-center items-center">
+        <div className="lg:flex flex-col justify-center items-center mt-5">
           <div className="flex justify-center  w-max lg:block border-3 border-solid border-red-500 rounded-full">
             <img src={ image || freelancer?.profilePicUrl || assets.default_profile_icon} alt="" className="rounded-full w-[250px] h-[250px] " />
           </div>
           
-          <div className="flex flex-col lg:flex-row justify-between gap-3 w-2/6 items-center mt-5 mx-auto lg:items-start lg:mx-0 lg:max-h-max ">
+          <div className="flex flex-col lg:flex-row justify-between gap-3 w-2/6 items-center mt-5 mb-5 mx-auto lg:items-start lg:mx-0  lg:max-h-max ">
             <button className="border-3 border-solid border-black p-1 px-2 rounded-full hover:bg-black hover:text-white" onClick={handleButton} disabled={isLoading}>
               <p className="font-semibold">Upload</p>
             </button>

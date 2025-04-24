@@ -78,12 +78,7 @@ const freelanceProfileInfo = async(req ,res) => {
 
         const {contact , location , github  } = req.body;
         
-        // if (!contact || !location ) {
-        //     return res.status(400).json({
-        //         success:false,
-        //         message:"Please fill the required fields"
-        //     })
-        // }
+       
 
         const updateFreelancerProfile = await Freelancer.findOneAndUpdate(
             { UserId:user.id } ,
