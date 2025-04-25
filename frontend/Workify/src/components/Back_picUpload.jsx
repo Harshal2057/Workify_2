@@ -62,7 +62,7 @@ const Back_picUpload = ({setUpdateBack_pic}) => {
         //updating freelancer data in react
         await fetchFreelancer();
 
-        navigate("/profilePage")
+        setUpdateBack_pic(false);
       }
 
     } catch (error) {
