@@ -31,9 +31,9 @@ const ProfilePageHeader = () => {
   }
 
   return (
-    <div className="w-full lg:h-screen pt-10 lg:pt-20 bg-gray-100 flex justify-center p-5 relative ">
+    <div className="w-full lg:h-[690px] xl:h-screen pt-10 lg:pt-20 bg-gray-100 flex justify-center p-5 relative ">
       <div
-        className={`w-full lg:w-5/6 lg:h-3/6 xl:h-full bg-gray-200 rounded-2xl absolute ${
+        className={`w-11/12 lg:w-5/6 lg:h-[684px] xl:h-full bg-gray-200 rounded-2xl absolute ${
           updateProfile_pic || updateBack_pic ? "blur-sm" : ""
         }`}
         style={{
