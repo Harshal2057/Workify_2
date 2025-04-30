@@ -123,49 +123,66 @@ const freelanceProfileInfo = async(req ,res) => {
 
 }
 
-const freelanceProfileSkills = async(req ,res) => {
 
+const freelanceProfileSkills = async(req, res) => {
     try {
-        
-        const {skills , about , education } = req.body;
-        const user = req.user;
-
-        const updateFreelancerProfile = await Freelancer.findOneAndUpdate(
-            { UserId: user.id },
-            {
-                $set: {
-                    about: about || "",
-                },
-                $push: {
-                    skills: { $each: Array.isArray(skills) ? skills : [] }, 
-                    education: { $each: Array.isArray(education) ? education : [] } 
-                }
-            },
-            { new: true }
-        );
-
-          if (!updateFreelancerProfile) {
-            return res.status(400).json({
-                success:false,
-                message:"Error occured while updating freelancer pofile"
-            })
-          }
-
-          return res.status(200).json({
-            success:true,
-            message:"Freelancer profile updated successfully",
-            updateFreelancerProfile
-          })
-
-
-    } catch (error) {
+      const { skills, about, education } = req.body;
+      const user = req.user;
+  
+      // Create update object dynamically based on what's provided
+      const updateObj = {};
+  
+      // Only update about if it's provided
+      if (about !== undefined) {
+        updateObj.$set = { about };
+      }
+  
+      // Only update skills if they're provided
+      if (skills) {
+        updateObj.$set = updateObj.$set || {};
+        updateObj.$set.skills = Array.isArray(skills) ? skills : [];
+      }
+      
+  
+      // Only update education if it's provided
+      if (education) {
+        updateObj.$push = updateObj.$push || {};
+        updateObj.$push.education = { $each: Array.isArray(education) ? education : [] };
+      }
+  
+      // Only proceed with update if there's something to update
+      if (Object.keys(updateObj).length === 0) {
         return res.status(400).json({
-            success:false,
-            message:`Error occured while Updating Freelancer skill section => ${error}`
-        })
+          success: false,
+          message: "No valid fields provided for update"
+        });
+      }
+  
+      const updateFreelancerProfile = await Freelancer.findOneAndUpdate(
+        { UserId: user.id },
+        updateObj,
+        { new: true }
+      );
+  
+      if (!updateFreelancerProfile) {
+        return res.status(400).json({
+          success: false,
+          message: "Error occurred while updating freelancer profile"
+        });
+      }
+  
+      return res.status(200).json({
+        success: true,
+        message: "Freelancer profile updated successfully",
+        updateFreelancerProfile
+      });
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        message: `Error occurred while updating Freelancer profile => ${error}`
+      });
     }
-
-}
+  };
 
 const freelancerProject = async(req ,res) => {
 
