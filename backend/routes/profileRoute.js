@@ -10,7 +10,7 @@ profileRoute.post("/client",protectedRoute , clientProfile);
 
 //Freelance Routes
 profileRoute.post("/freelancer/info" , protectedRoute , freelanceProfileInfo);
-profileRoute.post("/freelancer/skills" , protectedRoute , freelanceProfileSkills);
+profileRoute.post("/freelancer/xtraDetails" , protectedRoute , freelanceProfileSkills);
 profileRoute.post("/freelancer/project" , protectedRoute , freelancerProject );
 
 export default profileRoute;

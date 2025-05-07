@@ -18,10 +18,12 @@ import web_dev_2 from './web-dev-icon_2.png'
 import graphic_designer from './graphic_design-rbg.png/'
 import default_background_img from './background_image.png'
 import default_profile_icon from './default_profile_icon.png'
+import workify_logo_2 from './WORKIFY.svg';
 
 
 export const assets = {
     Workify_logo,
+    workify_logo_2,
     Hero_sec,
     google,
     insta,

@@ -9,6 +9,9 @@ import { useContext } from "react";
 import ProfilePage from "./pages/ProfilePage";
 import Back_picUpload from "./components/Back_picUpload";
 import Profile_picUpload from "./components/Profile_picUpload";
+import IntroPage from "./components/IntroPage";
+
+
 
 function App() {
  
@@ -16,9 +19,10 @@ function App() {
 
   return (
     <>
+
     <div className= "w-full min-h-screen overflow-x-hidden absolute -z-20">
 
-   
+
     <Navbar />
     <ToastContainer  position="top-right" autoClose={3000} />
     <div className="h-[85px] lg:hidden"></div> 

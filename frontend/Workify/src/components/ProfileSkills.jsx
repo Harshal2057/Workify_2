@@ -57,7 +57,7 @@ const ProfileSkills = () => {
 
     try {
       const Response = await axios.post(
-        `${url}/api/profile/freelancer/skills`,
+        `${url}/api/profile/freelancer/xtraDetails`,
         {skills:skills},
         {
           withCredentials: true,
@@ -162,7 +162,8 @@ const ProfileSkills = () => {
             <p className="font-semibold text-2xl"> Skills </p>
           </div>
 
-          {freelancer?.skills && freelancer.skills.length > 0 ? (
+          {freelancer?.skills && freelancer.skills.length > 0 
+          ? (
             <div className="flex flex-wrap gap-2 m-2">
               {freelancer.skills.map((skill, index) => (
                 <div

@@ -33,7 +33,7 @@ const ProfileAbout = () => {
 
     try {
       const Response = await axios.post(
-        `${url}/api/profile/freelancer/skills`,
+        `${url}/api/profile/freelancer/xtraDetails`,
         { about: data.about },
         {
           withCredentials: true,

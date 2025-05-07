@@ -15,6 +15,7 @@ const StoreContextProvider = (props) => {
     const [freelancer, setFreelancer] = useState(null)
     const [back_img, setBack_img] = useState(null)
     const [profile_img, setProfile_img] = useState(null)
+  const [projects , setProjects] = useState([]);
     
      
 
@@ -68,9 +69,55 @@ const StoreContextProvider = (props) => {
       }
     }
 
+    //Fetching Freelancer Projects
+    const fetchFreelancerProjects = async() => {
+
+      const token = localStorage.getItem("token");
+
+       if (!token) {
+        console.log("No token found, redirecting to login")
+        navigate("/auth");
+        return
+      }
+
+   try {
+    console.log("Fetching projects.....");
+    
+    const Response = await axios.get(`${url}/api/get-projects/allProjects` , {
+      withCredentials:true,
+      headers:{
+        Authorization: `Bearer ${token}`,
+      }
+    });
+
+    if (Response.data.projects && Response.data.projects.length > 0) {
+      console.log("The length is greater than 0");
+      setProjects(Response.data.projects);
+      console.log(Response.data.projects);
+    }
+
+ 
+   
+
+   } catch (error) {
+      console.log(`Error occured while fetching freelancer projects =>${error}`)
+   }
+
+    }
+
+    // useEffect(() => {
+    //   if (projects.length > 0) {
+    //     console.log("in useeffect =>");
+    //     console.log(typeof(projects));
+        
+    //     console.log(projects);
+        
+    //   }
+    // } , [projects])
    
     useEffect(() => {
-        fetchFreelancer()
+        fetchFreelancer(),
+        fetchFreelancerProjects()
       } , [])
 
 
@@ -85,7 +132,10 @@ const StoreContextProvider = (props) => {
             setShowLogin,
             logOut,
             freelancer,
-            fetchFreelancer
+            fetchFreelancer,
+            projects,
+            setProjects,
+            fetchFreelancerProjects
     }
 
     return <StoreContext.Provider value={contextValue}>

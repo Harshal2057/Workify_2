@@ -146,8 +146,8 @@ const freelanceProfileSkills = async(req, res) => {
   
       // Only update education if it's provided
       if (education) {
-        updateObj.$push = updateObj.$push || {};
-        updateObj.$push.education = { $each: Array.isArray(education) ? education : [] };
+        updateObj.$set = updateObj.$push || {};
+        updateObj.$set.education = Array.isArray(education) ? education : [];
       }
   
       // Only proceed with update if there's something to update

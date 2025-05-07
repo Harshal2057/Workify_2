@@ -16,6 +16,7 @@ import googleRoute from "./routes/googleRoute.js"
 import imgRouter from "./routes/imageRoute.js"
 import getProfileRouter from "./routes/getProfileRoute.js"
 import "./auth/google.js"
+import getProjectRoute from "./routes/getProjectRoute.js"
 
 
 dotenv.config()
@@ -62,6 +63,7 @@ app.use("/api/job" , jobRoute);
 app.use("/api/findJob" , findJobRoute);
 app.use("/uploadImg" , imgRouter);
 app.use("/get-profile" , getProfileRouter);
+app.use("/api/get-projects" , getProjectRoute);
 
 
 app.get("/" , (req ,res) => {

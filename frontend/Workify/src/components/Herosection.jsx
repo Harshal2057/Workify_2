@@ -34,7 +34,7 @@ const Herosection = () => {
         </div>
 
         {/* Right Side */}
-        <div className="relative lg:absolute lg:right-5 lg:top-40 w-full md:w-4/6 lg:w-3/6">
+        <div className="relative  lg:right-5 lg:top-40 w-full md:w-4/6 lg:w-3/6">
           {/* Background */}
           <div className="w-[90%] h-[90%]  absolute left-5 bottom-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 z-5 rounded-full"></div>
 
